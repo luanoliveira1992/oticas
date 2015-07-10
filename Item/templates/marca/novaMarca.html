@@ -1,0 +1,8 @@
+{% extends "baseCreate.html" %}
+
+{% block conteudo %}
+    {% csrf_token %}
+  
+    {{ form.as_p }}
+ 
+{% endblock %}

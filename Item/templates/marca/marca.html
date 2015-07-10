@@ -1,0 +1,20 @@
+{% extends "baseList.html" %}
+
+{% block create %}
+/marca/novo/
+{% endblock %}
+
+{% block TITULO %} {{ block.super }} Cadastro de Marcas {% endblock %}
+{% block SUBTITULO %} {{ block.super }} Informações geral sobre as marcas dos produtos {% endblock %}
+
+
+{% block cabecalho %}
+   <td>Código</td>
+   <td>Descrição</td>
+{% endblock %}
+
+{% block conteudo %}
+<td> {{ valor.codigo }} </td>
+<td> {{ valor.descricao }} </td>
+{% block acaodetail %} {{ block.super }} /marca/detalhe/{{ valor.codigo }} {% endblock %}
+{% endblock %}

@@ -1,0 +1,82 @@
+{% load staticfiles %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{% static 'js/alert.js' %}"></script>
+
+</head>
+
+<body>
+    <header class="navbar navbar-default navbar-static-top" role="banner" style="background:#eff9fc">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">Bots</a>
+            </div>
+            <nav class="collapse navbar-collapse" role="navigation">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Pregão</a>
+                    </li>
+                    <li>
+                        <a href="#">Histórico</a>
+                    </li>
+                    <li>
+                        <a href="#">Cadastros</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Begin Body -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3" id="leftCol">
+                <div class="well" style="background:#eff9fc">
+                    <ul class="nav nav-stacked" id="sidebar">
+                        <li><a href="#sec1">Itens</a>
+                        </li>
+                        <li><a href="#sec2">Pessoas</a>
+                        </li>
+                        <li><a href="#sec3">Marcas</a>
+                        </li>
+                        <li><a href="#sec4">Tipos Itens</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-md-9">
+                {% if messages %}
+                {% for message in messages %}
+                <div {% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissible" {% endif %} role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                </button>
+                 {{ message }}
+                </div>
+                {% endfor %}
+                 {% endif %}
+                {% block content %} {% endblock %} {% csrf_token %}
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+
+{% extends "template.html" %}
+{% block content %}
+<div class="page-header">
+    <h1>
+         {{TITULO}}
+         <small><br>{{SUBTITULO}}</small>
+    </h1>
+</div>
+<div class="well" style="background :#eff9fc; border :1px solid #b2e4f0">
+
+
+    <div class="table-responsive span6">
+        <table class="table table-bordered">
+            <thead>
+                <tr style="background:#337AB7">
+                    {% block cabecalho %} {% endblock %}
+                    <td>Ações</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for valor in object_list %}
+                <tr>
+                    {% block conteudo %} {% endblock %}
+                    <td>
+                        <a href="{% block acaodetail %} {% endblock %}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                        <a href="{{ACAOUPDATE}}"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
+                        <a href="{{ACAODELETE}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div align="center">
+        <nav >
+            <ul class="pagination">
+                {% if page_obj.number > 0 %}
+                  <li class=""><a href=" {{localURL}}?page=1 " aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                {% endif %}
+                {% for page in paginas %}
+                   {% if page_obj.number == page %}
+                    <li class="active"><a href=" {{localURL}}?page={{ page }} ">{{ page }}<span class="sr-only">(current)</span></a>
+                   {% endif %}
+                   {% if page_obj.number != page %}
+                    <li class=""><a href=" {{localURL}}?page={{ page }} ">{{ page }} <span class="sr-only">(current)</span></a>
+                   {% endif %}    
+                {% endfor %}
+                </li>
+              {% if page_obj.number != page_obj.paginator.num_pages %}
+                  <li class=""><a href="{{localURL}}?page={{ page_obj.paginator.num_pages }} " aria-label="Previous"><span aria-hidden="true">&raquo;</span></a></li>
+              {% endif %}
+            </ul>
+        </nav>
+            </div>
+    </div>
+</div>
+<div align="center">
+    <form action="{{CREATEACTION}}" method="get">
+        {% csrf_token %} 
+        <button type="submit" class="btn btn-primary">Novo</button>
+    </form>
+
+</div>
+
+{% endblock %}

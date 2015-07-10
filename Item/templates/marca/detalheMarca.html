@@ -1,0 +1,17 @@
+{% extends "baseDetails.html" %}
+
+{% block acaoVoltar %}
+/aparelhos/list/
+{% endblock %}
+
+{% block model %}
+Marca
+{% endblock %}
+
+
+{% block conteudo %}
+
+<p> <label>Código: </label> {{ aparelho.codigo }}</p>
+<p> <label>Descrição:</label> {{ aparelho.descricao }}</p>
+<p><label>Observação </label> {{ aparelho.categorias.descricao }}</p>
+{% endblock %}
