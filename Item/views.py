@@ -29,6 +29,9 @@ class ConsultarMarca(ListView):
         context['CREATEACTION'] = "/marca/novo"
         context['TITULO'] = "Cadastro de Marcas de Itens"
         context['SUBTITULO'] = "Informações Sobre Marcas"
+        context['DETALHAR'] = 'detalhemarca'
+        context['ATUALIZAR'] ='detalhemarca'
+        context['DELETAR'] = 'detalhemarca'
         context['paginas'] = paginas;
         
         
@@ -60,8 +63,12 @@ class InserirMarca(CreateView):
         return "/marca/"
     
 class DetalharMarca(DetailView):
-    queryset = Marca.objects.filter(pk=1)
     template_name = 'marca/detalheMarca.html'
+    model = Marca
+    
+    def get_success_url(self):
+        return reverse('marca')
+    
     def get_context_data(self, **kwargs):
         context = super(DetalharMarca, self).get_context_data(**kwargs)
         return context

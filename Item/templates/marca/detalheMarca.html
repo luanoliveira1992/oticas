@@ -1,7 +1,7 @@
 {% extends "baseDetails.html" %}
 
 {% block acaoVoltar %}
-/aparelhos/list/
+/marca/
 {% endblock %}
 
 {% block model %}
@@ -11,7 +11,7 @@ Marca
 
 {% block conteudo %}
 
-<p> <label>Código: </label> {{ aparelho.codigo }}</p>
-<p> <label>Descrição:</label> {{ aparelho.descricao }}</p>
-<p><label>Observação </label> {{ aparelho.categorias.descricao }}</p>
+<p> <label>Código: </label> {{ marca.codigo }}</p>
+<p> <label>Descrição:</label> {{ marca.descricao }}</p>
+<p><label>Observação </label> {{ marca.observacao }}</p>
 {% endblock %}

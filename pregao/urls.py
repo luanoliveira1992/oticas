@@ -10,5 +10,5 @@ urlpatterns = [
     url(r'^marca/$', ConsultarMarca.as_view(),name='marca'),
     url(r'^marca/novo/$', InserirMarca.as_view(),name='novamarca'),
     url(r'^marca/page(?P<page>[0-9]+)/$', ConsultarMarca.as_view(),name='marca'),
-    url(r'^marca/detalhe/(?P<codigo>\d{1})/$', ConsultarMarca.as_view(),name='detalhemarca'),
+    url(r'^marca/detalhe/(?P<pk>\d+)/$', DetalharMarca.as_view(),name='detalhemarca'),
 ]

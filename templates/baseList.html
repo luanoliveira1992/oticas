@@ -8,8 +8,6 @@
     </h1>
 </div>
 <div class="well" style="background :#eff9fc; border :1px solid #b2e4f0">
-
-
     <div class="table-responsive span6">
         <table class="table table-bordered">
             <thead>
@@ -23,9 +21,9 @@
                 <tr>
                     {% block conteudo %} {% endblock %}
                     <td>
-                        <a href="{% block acaodetail %} {% endblock %}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                        <a href="{{ACAOUPDATE}}"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
-                        <a href="{{ACAODELETE}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                        <a href="{% url DETALHAR pk=valor.codigo %}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                        <a href="{% url ATUALIZAR pk=valor.codigo %}"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
+                        <a href="{% url DELETAR pk=valor.codigo %}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                     </td>
                 </tr>
                 {% endfor %}
